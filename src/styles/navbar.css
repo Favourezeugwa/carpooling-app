@@ -1,0 +1,60 @@
+/* Navbar container */
+.navbar {
+  background-color: #d0f8ff; /* Same as the body background */
+  width: 200px;
+  height: 100vh;
+  padding: 20px;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
+}
+
+.navbar h3 {
+  color: #2b8eae;
+  font-size: 26px; /* Increase the font size */
+  margin-bottom: 40px; /* Add more space below the h3 */
+  font-weight: 600; /* Bold font weight for emphasis */
+  text-align: center; /* Center the text */
+  letter-spacing: 1px; /* Slightly increase letter spacing for elegance */
+}
+
+/* Menu item list */
+.navbar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Menu item */
+.navbar ul li {
+  margin-bottom: 25px; /* Add more space between each item */
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px; /* Slightly increase the font size */
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.navbar ul li a:hover {
+  color: #2b8eae;
+}
+
+.navbar ul li i {
+  margin-right: 12px; /* Add a bit more space between icon and text */
+  font-size: 20px; /* Slightly increase icon size */
+  color: #2b8eae;
+}
+
+/* Content container (Main app area) */
+.main-content {
+  margin-left: 200px; /* Account for the width of the navbar */
+  padding: 20px;
+  background-color: white; /* White background for the rest of the app */
+  min-height: 100vh;
+}

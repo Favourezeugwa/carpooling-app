@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/auth.css"; // Assuming your CSS file is named auth.css
 
-function AuthPage() {
+function AuthPage({ onLogin }) { // Accept onLogin prop from App.js
   const [isLogin, setIsLogin] = useState(false); // Switch between login and signup
 
   const handleToggle = () => {
@@ -10,14 +10,20 @@ function AuthPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle signup or login logic here
+
+    // Mock login/signup logic
+    // Normally, here you'd make an API request to your backend for login/signup
+    // For now, we'll just simulate a successful login by calling onLogin.
+
+    console.log("Form submitted!");
+    onLogin(); // Simulate a successful login by calling onLogin
   };
 
   return (
     <div className="auth-container">
       <div className="auth-form-container">
         <div className="auth-logo">
-          <h2>Student carpooling service</h2>
+          <h2>Student Carpooling Service</h2>
         </div>
         <h1>{isLogin ? "Welcome back" : "Create an account"}</h1>
         <p>{isLogin ? "Sign in to continue" : "Create a free account"}</p>
@@ -26,9 +32,10 @@ function AuthPage() {
             <>
               <input
                 type="email"
-                placeholder="university email address"
+                placeholder="University email address"
                 required
               />
+              <input type="text" placeholder="Username" required />
               <input type="password" placeholder="Password" required />
               <input type="password" placeholder="Repeat password" required />
             </>
@@ -41,6 +48,7 @@ function AuthPage() {
                 placeholder="University email address"
                 required
               />
+              <input type="text" placeholder="Username" required />
               <input type="password" placeholder="Password" required />
             </>
           )}
@@ -56,7 +64,6 @@ function AuthPage() {
         </p>
       </div>
       <div className="auth-image-container">
-        {/* Illustration or image goes here */}
         <img src="../images/carpool3.jpg" alt="illustration" />
       </div>
     </div>
