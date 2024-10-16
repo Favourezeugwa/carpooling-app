@@ -1,4 +1,4 @@
-require('dotenv').config(); // Load environment variables
+require("dotenv").config(); // Load environment variables
 
 const express = require("express");
 const mongoose = require("mongoose");
@@ -6,7 +6,8 @@ const cors = require("cors");
 const authRoutes = require("./routes/auth");
 
 //mongodb connection string
-const uri = "mongodb+srv://igwenaguudochukwu:OEHkiDSKlAH84dKk@carpooling-cluster.wfjbu.mongodb.net/?retryWrites=true&w=majority&appName=carpooling-cluster"
+const uri =
+  "mongodb+srv://igwenaguudochukwu:OEHkiDSKlAH84dKk@carpooling-cluster.wfjbu.mongodb.net/?retryWrites=true&w=majority&appName=carpooling-cluster";
 
 // Initialize Express
 const app = express();
@@ -25,5 +26,5 @@ mongoose
   .catch((error) => console.log("MongoDB connection error:", error));
 
 // Start the server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

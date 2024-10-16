@@ -2,9 +2,9 @@ POST http://localhost:5000/api/auth/signup
 Content-Type: application/json
 
 {
-    "username": "Ud",
-  "email": "uigwenagu@pvamu.edu",
-  "password": "password123"
+    "username": "Favour",
+  "email": "fezeugwa@pvamu.edu",
+  "password": "password1234"
 }
 
 ###
