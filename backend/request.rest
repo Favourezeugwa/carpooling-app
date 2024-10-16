@@ -1,0 +1,35 @@
+POST http://localhost:5000/api/auth/signup
+Content-Type: application/json
+
+{
+    "username": "Ud",
+  "email": "uigwenagu@pvamu.edu",
+  "password": "password123"
+}
+
+###
+POST http://localhost:5000/api/auth//resend-otp
+Content-Type: application/json
+
+{
+  "email": "uigwenagu@pvamu.edu"
+}
+
+###
+POST http://localhost:5000/api/auth/verify-otp
+Content-Type: application/json
+
+{
+  "email": "uigwenagu@pvamu.edu",
+  "otp": "721976"
+}
+
+###
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "uigwenagu@pvamu.edu",
+  "password": "password123"
+}
+
