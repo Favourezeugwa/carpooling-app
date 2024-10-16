@@ -1,14 +1,18 @@
+require('dotenv').config(); // Load environment variables
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const bodyParser = require("body-parser");
-const authRoutes = require("./routes/auth"); // We'll create this in a bit
+const authRoutes = require("./routes/auth");
+
+//mongodb connection string
+const uri = "mongodb+srv://igwenaguudochukwu:OEHkiDSKlAH84dKk@carpooling-cluster.wfjbu.mongodb.net/?retryWrites=true&w=majority&appName=carpooling-cluster"
 
 // Initialize Express
 const app = express();
 
 // Middleware
-app.use(bodyParser.json()); // For parsing JSON data
+app.use(express.json()); // For parsing JSON data
 app.use(cors()); // Enable CORS
 
 // Routes
@@ -16,10 +20,7 @@ app.use("/api/auth", authRoutes); // Authentication routes
 
 // MongoDB Connection
 mongoose
-  .connect("your-mongodb-connection-string", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(uri)
   .then(() => console.log("MongoDB connected"))
   .catch((error) => console.log("MongoDB connection error:", error));
 
