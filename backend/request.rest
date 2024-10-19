@@ -1,4 +1,4 @@
-POST http://localhost:5000/api/auth/signup
+POST http://localhost:5001/api/auth/signup
 Content-Type: application/json
 
 {
@@ -8,28 +8,28 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:5000/api/auth//resend-otp
+POST http://localhost:5001/api/auth//resend-otp
 Content-Type: application/json
 
 {
-  "email": "uigwenagu@pvamu.edu"
+  "email": "fezeugwa@pvamu.edu"
 }
 
 ###
-POST http://localhost:5000/api/auth/verify-otp
+POST http://localhost:5001/api/auth/verify-otp
 Content-Type: application/json
 
 {
-  "email": "uigwenagu@pvamu.edu",
-  "otp": "721976"
+  "email": "fezeugwa@pvamu.edu",
+  "otp": "346618"
 }
 
 ###
-POST http://localhost:5000/api/auth/login
+POST http://localhost:5001/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "uigwenagu@pvamu.edu",
-  "password": "password123"
+  "email": "fezeugwa@pvamu.edu",
+  "password": "password1234"
 }
 
