@@ -28,4 +28,26 @@ async function sendOtpEmail(email, otp) {
   }
 }
 
-module.exports = { sendOtpEmail };
+// Function to send the Reset Password Email
+async function sendResetPasswordEmail(email, resetUrl) {
+  const mailOptions = {
+    from: process.env.EMAIL_USER,
+    to: email,
+    subject: 'Password Reset Request',
+    html: `
+      <p>You requested a password reset. Click the link below to reset your password:</p>
+      <a href="${resetUrl}">${resetUrl}</a>
+      <p>If you didn't request this, please ignore this email.</p>
+    `,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log('Password reset email sent successfully');
+  } catch (error) {
+    console.error('Error sending password reset email:', error);
+    throw error; // Propagate the error to the forgot password route
+  }
+}
+
+module.exports = { sendOtpEmail, sendResetPasswordEmail };

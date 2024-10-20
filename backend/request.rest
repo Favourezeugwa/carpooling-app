@@ -2,17 +2,33 @@ POST http://localhost:5001/api/auth/signup
 Content-Type: application/json
 
 {
-    "username": "Favour",
-  "email": "fezeugwa@pvamu.edu",
+    "username": "Ud",
+  "email": "uigwenagu@pvamu.edu",
   "password": "password1234"
 }
 
 ###
-POST http://localhost:5001/api/auth//resend-otp
+POST http://localhost:5001/api/auth//forgot-password
 Content-Type: application/json
 
 {
-  "email": "fezeugwa@pvamu.edu"
+  "email": "uigwenagu@pvamu.edu"
+}
+
+###
+POST http://localhost:5001/api/auth/reset-password/121837?email=uigwenagu@pvamu.edu
+Content-Type: application/json
+
+{
+  "newPassword": "password1234"
+}
+
+###
+POST http://localhost:5001/api/auth/resend-otp
+Content-Type: application/json
+
+{
+  "email": "uigwenagu@pvamu.edu"
 }
 
 ###
@@ -20,8 +36,8 @@ POST http://localhost:5001/api/auth/verify-otp
 Content-Type: application/json
 
 {
-  "email": "fezeugwa@pvamu.edu",
-  "otp": "346618"
+  "email": "uigwenagu@pvamu.edu",
+  "otp": "769945"
 }
 
 ###
@@ -29,7 +45,7 @@ POST http://localhost:5001/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "fezeugwa@pvamu.edu",
+  "email": "uigwenagu@pvamu.edu",
   "password": "password1234"
 }
 
