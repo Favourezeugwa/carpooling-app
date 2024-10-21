@@ -1,0 +1,91 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure the modal is on top of other elements */
+}
+
+.modal {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative; /* To ensure the modal is centered and positioned well */
+}
+
+.modal h2 {
+  margin-bottom: 20px;
+  text-align: center; /* Center the heading */
+}
+
+.modal label {
+  display: block;
+  margin-top: 10px;
+}
+
+.modal input,
+.modal select,
+.modal textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.modal textarea {
+  height: 80px;
+}
+
+.invitee-row {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.invitee-row input {
+  flex: 2; /* Make the input field larger */
+  padding: 8px; /* Add padding to input field */
+}
+
+.invitee-row select {
+  flex: 1; /* Make the dropdown smaller */
+  margin-left: 10px;
+  padding: 6px; /* Adjust padding to make it consistent */
+}
+
+.remove-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background-color: #d32f2f;
+}
+
+.modal button {
+  margin: 10px 0;
+  padding: 5px 15px;
+  background-color: #2b8eae;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal button:hover {
+  background-color: #216d85;
+}

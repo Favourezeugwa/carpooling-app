@@ -1,0 +1,23 @@
+.create-carpool {
+  padding: 20px;
+}
+
+.create-carpool-btn {
+  padding: 10px 20px;
+  background-color: #2b8eae;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.create-carpool-btn:hover {
+  background-color: #216d85;
+}
+
+.carpool-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}

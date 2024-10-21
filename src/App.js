@@ -1,18 +1,23 @@
 import React, { useState } from "react";
 import AuthPage from "./components/authpage"; // Adjust the path if needed
 import NavBar from "./components/navbar"; // Import NavBar component
+import CreateCarpool from "./components/createcarpool"; // Import CreateCarpool component
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css"; // Your global or App-specific CSS
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Manage login state
+  const [username, setUsername] = useState(""); // Store the username of the logged-in user
 
-  const handleLogin = () => {
+  // Handle login by setting authentication and saving the username
+  const handleLogin = (user) => {
     setIsAuthenticated(true);
+    setUsername(user.username); // Save the username from the user object
   };
 
   const handleSignOut = () => {
     setIsAuthenticated(false); // Clear the authentication state
+    setUsername(""); // Clear the username
   };
 
   return (
@@ -20,12 +25,12 @@ function App() {
       <div className="App">
         {!isAuthenticated ? (
           // Render AuthPage if the user is not authenticated
-          <AuthPage onLogin={handleLogin} />
+          <AuthPage onLogin={handleLogin} /> // Pass handleLogin to AuthPage
         ) : (
           // Render the main app with NavBar and routes after login
           <div className="app-container">
-            <NavBar onSignOut={handleSignOut} />{" "}
-            {/* Pass handleSignOut to NavBar */}
+            <NavBar onSignOut={handleSignOut} username={username} />{" "}
+            {/* Pass handleSignOut and username to NavBar */}
             <div className="main-content">
               <Routes>
                 <Route
@@ -36,14 +41,7 @@ function App() {
                   path="/offer-ride"
                   element={<div>Offer Ride Page</div>}
                 />
-                <Route
-                  path="/match-rider-driver"
-                  element={<div>Match Rider/Driver Page</div>}
-                />
-                <Route
-                  path="/create-carpool"
-                  element={<div>Create carpool and invite friend</div>}
-                />
+                <Route path="/create-carpool" element={<CreateCarpool />} />
                 <Route
                   path="/carpool-history"
                   element={<div>Carpool History Page</div>}
