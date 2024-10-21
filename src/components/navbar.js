@@ -29,6 +29,11 @@ const NavBar = ({ onSignOut }) => {
           </Link>
         </li>
         <li>
+          <Link to="/create-carpool">
+            <i className="fas fa-car"></i> Create Carpool
+          </Link>
+        </li>
+        <li>
           <Link to="/carpool-history">
             <i className="fas fa-history"></i> Carpool History
           </Link>

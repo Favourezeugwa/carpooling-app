@@ -100,3 +100,31 @@ body {
   width: 100%;
   height: auto;
 }
+
+.status-message {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.success {
+  color: green;
+  background-color: #e6ffe6;
+}
+
+.error {
+  color: red;
+  background-color: #ffe6e6;
+}
+
+.resend-otp {
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.resend-otp:hover {
+  color: #0056b3;
+}

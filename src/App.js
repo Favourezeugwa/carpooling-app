@@ -1,18 +1,3 @@
-// import React from "react";
-// import AuthPage from "./components/authpage";
-// import "./App.css";
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <AuthPage />
-//     </div>
-//   );
-// }
-
-// export default App;
-
-// src/App.js
 import React, { useState } from "react";
 import AuthPage from "./components/authpage"; // Adjust the path if needed
 import NavBar from "./components/navbar"; // Import NavBar component
@@ -22,12 +7,10 @@ import "./App.css"; // Your global or App-specific CSS
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Manage login state
 
-  // Handle user login (this can be passed to AuthPage and triggered on successful login)
   const handleLogin = () => {
     setIsAuthenticated(true);
   };
 
-  // Handle user sign out (this will be passed to NavBar)
   const handleSignOut = () => {
     setIsAuthenticated(false); // Clear the authentication state
   };
@@ -56,6 +39,10 @@ function App() {
                 <Route
                   path="/match-rider-driver"
                   element={<div>Match Rider/Driver Page</div>}
+                />
+                <Route
+                  path="/create-carpool"
+                  element={<div>Create carpool and invite friend</div>}
                 />
                 <Route
                   path="/carpool-history"
