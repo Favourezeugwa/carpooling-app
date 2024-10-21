@@ -51,9 +51,11 @@ function AuthPage({ onLogin }) {
 
       const signupData = await signupResponse.json();
       if (signupResponse.ok) {
-        setStatusMessage("Signup successful. Please verify your email.");
+       // setStatusMessage("Signup successful. Please verify your email.");
+        setStatusMessage("Signup successful. Please Sign In.");
         setIsError(false);
-        setShowOtp(true); // Show OTP field after signup
+       // setShowOtp(true); // Show OTP field after signup
+        setShowOtp(false);
       } else {
         setStatusMessage(`Signup failed: ${signupData.message}`);
         setIsError(true);

@@ -38,28 +38,30 @@ router.post("/signup", async (req, res) => {
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Generate and hash OTP
-    const otp = generateOtp();
-    const hashedOtp = await bcrypt.hash(otp, 10);
+    // // Generate and hash OTP
+    // const otp = generateOtp();
+    // const hashedOtp = await bcrypt.hash(otp, 10);
 
     // Create new user with OTP and expiration time
     const newUser = new User({
       username,
       email,
       password: hashedPassword,
-      otp: hashedOtp,
-      otpExpiresAt: Date.now() + 5 * 60 * 1000, // OTP valid for 5 minutes
+      isVerified: true,
+      // otp: hashedOtp,
+      // otpExpiresAt: Date.now() + 5 * 60 * 1000, // OTP valid for 5 minutes
     });
 
     // Save the new user to the database
     await newUser.save();
 
     // Send OTP to the user's email
-    await sendOtpEmail(email, otp);
+    // await sendOtpEmail(email, otp);
 
     res.status(201).json({
       message:
-        "Signup successful. Please verify your email with the OTP sent to you.",
+        // "Signup successful. Please verify your email with the OTP sent to you.",
+        "Signup successful. Please Sign In.",
     });
   } catch (error) {
     console.error("Signup Error:", error);
