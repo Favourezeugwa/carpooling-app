@@ -1,7 +1,7 @@
 /* Navbar container */
 .navbar {
   background-color: #d0f8ff; /* Same as the body background */
-  width: 200px;
+  width: 250px; /* Make the navbar wider */
   height: 100vh;
   padding: 20px;
   position: fixed;
@@ -13,7 +13,7 @@
 
 .navbar h3 {
   color: #2b8eae;
-  font-size: 26px; /* Increase the font size */
+  font-size: 28px; /* Increase the font size */
   margin-bottom: 40px; /* Add more space below the h3 */
   font-weight: 600; /* Bold font weight for emphasis */
   text-align: center; /* Center the text */
@@ -51,9 +51,24 @@
   color: #2b8eae;
 }
 
+/* User Info section */
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2b8eae;
+}
+
+.user-info i {
+  font-size: 24px;
+  margin-right: 12px;
+}
+
 /* Content container (Main app area) */
 .main-content {
-  margin-left: 200px; /* Account for the width of the navbar */
+  margin-left: 250px; /* Account for the width of the navbar */
   padding: 20px;
   background-color: white; /* White background for the rest of the app */
   min-height: 100vh;

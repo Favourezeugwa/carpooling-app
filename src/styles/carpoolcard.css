@@ -1,0 +1,37 @@
+.carpool-card {
+  background-color: white;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.carpool-card:hover {
+  transform: scale(1.02);
+}
+
+.carpool-card h3 {
+  margin: 0;
+  color: #2b8eae;
+}
+
+.carpool-card p {
+  margin: 5px 0;
+}
+
+.carpool-details {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #333;
+}
+
+.carpool-details ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.carpool-details li {
+  margin: 5px 0;
+}

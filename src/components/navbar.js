@@ -1,12 +1,17 @@
-// src/components/NavBar.js
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/navbar.css"; // Import the CSS
 
-const NavBar = ({ onSignOut }) => {
+const NavBar = ({ onSignOut, username }) => {
   return (
     <div className="navbar">
-      <h3>Student carpool</h3>
+      <h3>Student Carpool</h3>
+      {/* Display the username with a user icon */}
+      {/* <div className="user-info">
+        <i className="fas fa-user"></i>
+        <span>{username}</span>
+      </div> */}
+
       <ul>
         <li>
           <Link to="/">
@@ -24,18 +29,13 @@ const NavBar = ({ onSignOut }) => {
           </Link>
         </li>
         <li>
-          <Link to="/match-rider-driver">
-            <i className="fas fa-exchange-alt"></i> Match Rider/Driver
-          </Link>
-        </li>
-        <li>
           <Link to="/create-carpool">
-            <i className="fas fa-car"></i> Create Carpool
+            <i className="fas fa-exchange-alt"></i> Create Carpool
           </Link>
         </li>
         <li>
           <Link to="/carpool-history">
-            <i className="fas fa-history"></i> Carpool History
+            <i className="fas fa-history"></i> All Carpools
           </Link>
         </li>
         <li>
@@ -57,7 +57,6 @@ const NavBar = ({ onSignOut }) => {
       </ul>
 
       <hr />
-
       <ul>
         <li>
           <a href="#" onClick={onSignOut}>
