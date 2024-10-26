@@ -5,9 +5,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const authRoutes = require("./routes/auth");
 
-//mongodb connection string
-const uri =
-  "mongodb+srv://igwenaguudochukwu:OEHkiDSKlAH84dKk@carpooling-cluster.wfjbu.mongodb.net/?retryWrites=true&w=majority&appName=carpooling-cluster";
+// //mongodb connection string from .env
+const uri = process.env.URI;
 
 // Initialize Express
 const app = express();

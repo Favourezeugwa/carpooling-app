@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:5001/api/auth/reset-password/121837?email=uigwenagu@pvamu.edu
+POST http://localhost:5001/api/auth/reset-password/921395?email=uigwenagu@pvamu.edu
 Content-Type: application/json
 
 {

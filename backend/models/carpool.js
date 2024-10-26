@@ -3,12 +3,20 @@ const mongoose = require('mongoose');
 const carpoolSchema = new mongoose.Schema({
   creator: { type: mongoose.Schema.Types.ObjectId, ref: 'user', required: true },
   event: { type: String, required: true }, // Description of the event (e.g., "Baseball Game")
-  location: { type: String, required: true },
+  meetuplocation: { type: String, required: true },
+  destination: { type: String, required: true },
   dateTime: { type: Date, required: true },
-  drivers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'user' }], // Users who are drivers
+  drivers: [
+    {
+      user: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
+      car: { type: mongoose.Schema.Types.ObjectId, ref: 'Car' }, // Reference to the verified car
+    },
+  ],
   riders: [{ type: mongoose.Schema.Types.ObjectId, ref: 'user' }], // Users who are riders
   invitations: [{ type: mongoose.Schema.Types.ObjectId, ref: 'user' }], // Invited users
-  carRequired: { type: Boolean, default: true }, // If a verified car is required for drivers
-});
+  status: { type: String, enum: ['Upcoming','Active', 'Completed', 'Canceled'], default: 'Upcoming' },
+  maxRiders: { type: Number, required: true },
+  });
 
-module.exports = mongoose.model('carpool', carpoolSchema);
+module.exports = mongoose.model('Carpool', carpoolSchema);
+      
