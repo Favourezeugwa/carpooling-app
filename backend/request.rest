@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:5001/api/auth/reset-password/921395?email=uigwenagu@pvamu.edu
+POST http://localhost:5001/api/auth/reset-password/651621?email=uigwenagu@pvamu.edu
 Content-Type: application/json
 
 {
@@ -49,3 +49,20 @@ Content-Type: application/json
   "password": "password1234"
 }
 
+###
+POST http://localhost:5001/api/carpool/create-carpool
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MTY4YzBiNTNmZjU5M2Q0OGRkMTFiZiIsImlhdCI6MTczMDAwMDI4NCwiZXhwIjoxNzMwMDAzODg0fQ.SxmbpTrudmphQPrvLlatxU37MaUmxsKI0pDMXpPckd4
+
+{
+  "carpoolName": "UDs carpool 2",
+      "pickupLocation": "MSC",
+      "dropoffLocation": "UTD",
+      "dateTime": "2024-10-30T14:00:00Z",
+      "role": "Driver",
+      "carType": "Rental",
+      "maxCarpoolers": 4,
+      "estimatedCost": "$30",
+      "specialNotes": "My carpool",
+      "invitations": []
+}
