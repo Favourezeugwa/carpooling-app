@@ -8,22 +8,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Ensure the modal is on top of other elements */
+  z-index: 1000;
 }
 
 .modal {
   background-color: white;
-  padding: 30px;
   border-radius: 10px;
   max-width: 600px;
   width: 100%;
+  height: 70%;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  position: relative; /* To ensure the modal is centered and positioned well */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content {
+  padding: 30px;
+  overflow-y: auto;
+  height: calc(100% - 70px); /* Accounts for header and buttons */
 }
 
 .modal h2 {
   margin-bottom: 20px;
-  text-align: center; /* Center the heading */
+  text-align: center;
 }
 
 .modal label {
@@ -52,14 +60,14 @@
 }
 
 .invitee-row input {
-  flex: 2; /* Make the input field larger */
-  padding: 8px; /* Add padding to input field */
+  flex: 2;
+  padding: 8px;
 }
 
 .invitee-row select {
-  flex: 1; /* Make the dropdown smaller */
+  flex: 1;
   margin-left: 10px;
-  padding: 6px; /* Adjust padding to make it consistent */
+  padding: 6px;
 }
 
 .remove-btn {
@@ -76,9 +84,15 @@
   background-color: #d32f2f;
 }
 
+/* Buttons for Creating and Cancelling */
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
 .modal button {
-  margin: 10px 0;
-  padding: 5px 15px;
+  padding: 10px 20px;
   background-color: #2b8eae;
   color: white;
   border: none;
@@ -88,4 +102,25 @@
 
 .modal button:hover {
   background-color: #216d85;
+}
+
+/* Public/Private Carpool Toggle Row */
+.radio-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.radio-row label {
+  font-weight: 600;
+  color: #555;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+.radio-row input[type="radio"] {
+  margin-right: 5px;
+  cursor: pointer;
 }
