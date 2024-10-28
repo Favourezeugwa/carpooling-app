@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AuthPage from "./components/authpage"; // Adjust the path if needed
 import NavBar from "./components/navbar"; // Import NavBar component
 import CreateCarpool from "./components/createcarpool"; // Import CreateCarpool component
+import CarpoolList from "./components/carpoolList"; // Import CarpoolList component
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css"; // Your global or App-specific CSS
 
@@ -44,7 +45,7 @@ function App() {
                 <Route path="/create-carpool" element={<CreateCarpool />} />
                 <Route
                   path="/carpool-history"
-                  element={<div>Carpool History Page</div>}
+                  element={<CarpoolList currentUser={username} />} // Display user's carpools
                 />
                 <Route
                   path="/notifications"

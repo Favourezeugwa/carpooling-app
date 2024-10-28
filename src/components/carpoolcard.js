@@ -20,8 +20,8 @@ const CarpoolCard = ({ carpool, currentUser, onEdit, onDelete }) => {
 
   return (
     <div className="carpool-card" onClick={() => setIsExpanded(!isExpanded)}>
-      <h3>{carpool.name}</h3>
-      <p>{carpool.description}</p>
+      <h3>{carpool.name || "Carpool Name Not Available"}</h3>
+      <p>{carpool.description || "No description available."}</p>
 
       {/* Three-dot menu for Edit and Delete */}
       {isCreator && (
@@ -39,24 +39,28 @@ const CarpoolCard = ({ carpool, currentUser, onEdit, onDelete }) => {
       {/* Expanded content */}
       {isExpanded && (
         <div className="carpool-details">
-          <p><strong>Pickup Location:</strong> {carpool.pickupLocation}</p>
-          <p><strong>Dropoff Location:</strong> {carpool.dropoffLocation}</p>
-          <p><strong>Your Role:</strong> {carpool.userRole}</p>
+          <p><strong>Pickup Location:</strong> {carpool.pickupLocation || "Not specified"}</p>
+          <p><strong>Dropoff Location:</strong> {carpool.dropoffLocation || "Not specified"}</p>
+          <p><strong>Your Role:</strong> {carpool.userRole || "Not specified"}</p>
           <p><strong>Time & Date:</strong> {carpool.date} at {carpool.time}</p>
-          <p><strong>Car Type:</strong> {carpool.carType}</p>
+          <p><strong>Car Type:</strong> {carpool.carType || "Not specified"}</p>
           <p><strong>Carpool Type:</strong> {carpool.isPublic ? "Public" : "Private"}</p>
-          <p><strong>Maximum Carpoolers per Car:</strong> {carpool.maxCarpoolers}</p>
+          <p><strong>Maximum Carpoolers per Car:</strong> {carpool.maxCarpoolers || "Not specified"}</p>
           {carpool.estimatedCost && (
             <p><strong>Estimated Cost:</strong> ${carpool.estimatedCost}</p>
           )}
           <p><strong>Invitees:</strong></p>
           <ul>
-            {carpool.invitees.map((invitee, index) => (
-              <li key={index}>{invitee.email} - {invitee.role}</li>
-            ))}
+            {carpool.invitees && carpool.invitees.length > 0 ? (
+              carpool.invitees.map((invitee, index) => (
+                <li key={index}>{invitee.email} - {invitee.role}</li>
+              ))
+            ) : (
+              <li>No invitees added.</li>
+            )}
           </ul>
           {carpool.notes && (
-            <p><strong>Special Notes:</strong> {carpool.notes}</p>
+            <p><strong>Special Notes:</strong> {carpool.notes || "No special notes."}</p>
           )}
         </div>
       )}
@@ -76,4 +80,3 @@ const CarpoolCard = ({ carpool, currentUser, onEdit, onDelete }) => {
 };
 
 export default CarpoolCard;
-

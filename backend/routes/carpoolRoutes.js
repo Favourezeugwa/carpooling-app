@@ -373,4 +373,22 @@ router.get("/public-carpools", authenticateUser, async (req, res) => {
   }
 });
 
+// Show User's Upcoming and Active Carpools
+router.get("/show-user-carpools", authenticateUser, async (req, res) => {
+  try {
+    const userId = req.user._id;
+
+    // Find carpools where the user is either a creator, a driver, or a rider and the status is "Upcoming" or "Active"
+    const carpools = await Carpool.find({
+      $or: [{ creator: userId }, { "carpoolers.user": userId }],
+      status: { $in: ["Upcoming", "Active"] },
+    });
+
+    res.status(200).json({ carpools });
+  } catch (error) {
+    console.error("Error fetching carpools:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 module.exports = router;
