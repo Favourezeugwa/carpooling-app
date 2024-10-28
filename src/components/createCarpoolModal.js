@@ -1,61 +1,87 @@
 import React, { useState } from "react";
-import "../styles/createcarpoolModal.css"; // Import the specific CSS for the modal
+import "../styles/createcarpoolModal.css";
 
 const CreateCarpoolModal = ({ onClose, onCreateCarpool }) => {
   const [name, setName] = useState("");
   const [pickupLocation, setPickupLocation] = useState("");
   const [dropoffLocation, setDropoffLocation] = useState("");
   const [invitees, setInvitees] = useState([{ email: "", role: "Rider" }]);
-  const [userRole, setUserRole] = useState("Rider"); // Role for the creator
-  const [maxCarpoolers, setMaxCarpoolers] = useState(4); // Maximum carpoolers per car
-  const [isPublic, setIsPublic] = useState(false); // Toggle for Public/Private
+  const [userRole, setUserRole] = useState("Rider");
+  const [maxCarpoolers, setMaxCarpoolers] = useState(4);
+  const [isPublic, setIsPublic] = useState(false);
   const [carType, setCarType] = useState("Private");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [notes, setNotes] = useState("");
-  const [estimatedCost, setEstimatedCost] = useState(""); // Field for estimated cost
+  const [estimatedCost, setEstimatedCost] = useState("");
 
-  // Handle changes for invitees
   const handleInviteeChange = (index, field, value) => {
     const updatedInvitees = [...invitees];
     updatedInvitees[index][field] = value;
     setInvitees(updatedInvitees);
   };
 
-  // Add new invitee row
   const handleAddInvitee = () => {
     setInvitees([...invitees, { email: "", role: "Rider" }]);
   };
 
-  // Remove invitee row
   const handleRemoveInvitee = (index) => {
     const updatedInvitees = invitees.filter((_, i) => i !== index);
     setInvitees(updatedInvitees);
   };
 
-  const handleCreate = () => {
+  const handleCreate = async () => {
     const newCarpool = {
-      name,
+      carpoolName: name,
       pickupLocation,
       dropoffLocation,
-      date,
-      time,
-      invitees,
+      dateTime: `${date}T${time}`,
+      role: userRole,
       carType,
-      userRole,
       maxCarpoolers,
       isPublic,
-      notes,
       estimatedCost,
-      description: `Carpool from ${pickupLocation} to ${dropoffLocation}`,
+      specialNotes: notes,
+      invitations: invitees,
     };
-    onCreateCarpool(newCarpool);
-    onClose(); // Close the modal after creation
+
+    console.log("Creating carpool with data:", newCarpool);
+    console.log("Authorization Token:", localStorage.getItem("token"));
+
+    try {
+      const response = await fetch(
+        "http://localhost:5001/api/carpool/create-carpool",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify(newCarpool),
+        }
+      );
+
+      console.log("Response status:", response.status);
+
+      if (response.ok) {
+        const data = await response.json();
+        onCreateCarpool(data.carpool);
+        onClose();
+      } else {
+        const errorData = await response.json();
+        console.error("Error creating carpool:", errorData);
+        alert(
+          errorData.message || "Failed to create carpool. Please try again."
+        );
+      }
+    } catch (error) {
+      console.error("Error creating carpool:", error);
+      alert("Failed to create carpool. Please try again.");
+    }
   };
 
   return (
     <div className="modal-backdrop">
-      `{" "}
       <div className="modal">
         <div className="modal-content">
           <h2>Create Carpool</h2>
@@ -171,8 +197,8 @@ const CreateCarpoolModal = ({ onClose, onCreateCarpool }) => {
                 type="radio"
                 name="carpoolType"
                 value="Public"
-                checked={carType === "Public"}
-                onChange={(e) => setCarType(e.target.value)}
+                checked={isPublic}
+                onChange={() => setIsPublic(true)}
               />
               Make Public
             </label>
@@ -181,8 +207,8 @@ const CreateCarpoolModal = ({ onClose, onCreateCarpool }) => {
                 type="radio"
                 name="carpoolType"
                 value="Private"
-                checked={carType === "Private"}
-                onChange={(e) => setCarType(e.target.value)}
+                checked={!isPublic}
+                onChange={() => setIsPublic(false)}
               />
               Make Private
             </label>

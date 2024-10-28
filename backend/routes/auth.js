@@ -2,7 +2,7 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
-const { sendOtpEmail, sendResetPasswordEmail } = require("../otpemailservice");
+const { sendOtpEmail, sendResetPasswordEmail } = require("../emailservice");
 const crypto = require("crypto");
 
 const router = express.Router();
@@ -167,11 +167,10 @@ router.post("/forgot-password", async (req, res) => {
     user.isVerified = false;
     await user.save();
 
-    // Send reset password email to the user
-    const resetUrl = `http://localhost:3000/reset-password/${otp}?email=${email}`;
-    await sendResetPasswordEmail(email, resetUrl);
+    // Send reset otp email to the user
+    await sendResetPasswordEmail(email, otp);
 
-    res.status(200).json({ message: "Password reset link has been sent to your email." });
+    res.status(200).json({ message: "Password reset OTP has been sent to your email." });
   } catch (error) {
     console.error("Forgot Password Error:", error);
     res.status(500).json({ message: "Server error." });

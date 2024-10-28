@@ -2,20 +2,37 @@ const mongoose = require('mongoose');
 
 const carpoolSchema = new mongoose.Schema({
   creator: { type: mongoose.Schema.Types.ObjectId, ref: 'user', required: true },
-  event: { type: String, required: true }, // Description of the event (e.g., "Baseball Game")
-  meetuplocation: { type: String, required: true },
-  destination: { type: String, required: true },
+  carpoolName: { type: String, required: true }, // Description of the event (e.g., "Baseball Game")
+  pickupLocation: { type: String, required: true },
+  dropoffLocation: { type: String, required: true },
   dateTime: { type: Date, required: true },
-  drivers: [
+  role: { type: String, enum: ['Rider', 'Driver'], required: true },
+  carType: { 
+    type: String, 
+    enum: ['Private', 'Rental'], 
+    default: 'Private' 
+  },
+  isPublic: { 
+    type: Boolean, 
+    default: false 
+  }, // Determines if the carpool is viewable by others
+  carpoolers: [
     {
       user: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
-      car: { type: mongoose.Schema.Types.ObjectId, ref: 'Car' }, // Reference to the verified car
-    },
+      role: { type: String, enum: ['Rider', 'Driver'], required: true }
+    }
   ],
-  riders: [{ type: mongoose.Schema.Types.ObjectId, ref: 'user' }], // Users who are riders
-  invitations: [{ type: mongoose.Schema.Types.ObjectId, ref: 'user' }], // Invited users
+  invitations: [
+    {
+      email: { type: String, required: true },
+      role: { type: String, enum: ['Rider', 'Driver'] }
+    }
+  ], // Invited users with their roles (rider/driver)
   status: { type: String, enum: ['Upcoming','Active', 'Completed', 'Canceled'], default: 'Upcoming' },
-  maxRiders: { type: Number, required: true },
+  maxCarpoolers: { type: Number, required: true },
+  currentCarpoolers: { type: Number, default: 1 },
+  estimatedCost: { type: String }, // Optional estimated cost per person
+  specialNotes: { type: String } // Additional information like meet-up points
   });
 
 module.exports = mongoose.model('Carpool', carpoolSchema);

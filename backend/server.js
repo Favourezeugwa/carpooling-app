@@ -4,6 +4,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const authRoutes = require("./routes/auth");
+const carpoolRoutes = require("./routes/carpoolRoutes")
 
 // //mongodb connection string from .env
 const uri = process.env.URI;
@@ -17,6 +18,7 @@ app.use(cors()); // Enable CORS
 
 // Routes
 app.use("/api/auth", authRoutes); // Authentication routes
+app.use("/api/carpool", carpoolRoutes); // Carpool routes 
 
 // MongoDB Connection
 mongoose

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/auth.css"; // Assuming your CSS file is named auth.css
+import { setToken, removeToken } from "../utils/auth"; // Import the token management functions
 
 function AuthPage({ onLogin }) {
   const [isLogin, setIsLogin] = useState(false); // Switch between login and signup
@@ -51,10 +52,8 @@ function AuthPage({ onLogin }) {
 
       const signupData = await signupResponse.json();
       if (signupResponse.ok) {
-       // setStatusMessage("Signup successful. Please verify your email.");
         setStatusMessage("Signup successful. Please Sign In.");
         setIsError(false);
-       // setShowOtp(true); // Show OTP field after signup
         setShowOtp(false);
       } else {
         setStatusMessage(`Signup failed: ${signupData.message}`);
@@ -75,6 +74,7 @@ function AuthPage({ onLogin }) {
 
       const loginData = await loginResponse.json();
       if (loginResponse.ok) {
+        setToken(loginData.token); // Store the token in localStorage
         setStatusMessage("Login successful!");
         setIsError(false);
         onLogin(); // Call the onLogin function after successful login
@@ -137,7 +137,6 @@ function AuthPage({ onLogin }) {
   };
 
   const handleResendOtp = async () => {
-    // Resend OTP request to the correct route
     const resendOtpResponse = await fetch(
       "http://localhost:5001/api/auth/resend-otp",
       {
