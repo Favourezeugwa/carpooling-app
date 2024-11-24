@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:5001/api/auth/reset-password/651621?email=uigwenagu@pvamu.edu
+POST http://localhost:5001/api/auth/reset-password/925179?email=uigwenagu@pvamu.edu
 Content-Type: application/json
 
 {
@@ -45,24 +45,30 @@ POST http://localhost:5001/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "uigwenagu@pvamu.edu",
-  "password": "password1234"
+  "email": "fezeugwa@pvamu.edu",
+  "password": "123456"
 }
 
 ###
 POST http://localhost:5001/api/carpool/create-carpool
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MTY4YzBiNTNmZjU5M2Q0OGRkMTFiZiIsImlhdCI6MTczMDAwMDI4NCwiZXhwIjoxNzMwMDAzODg0fQ.SxmbpTrudmphQPrvLlatxU37MaUmxsKI0pDMXpPckd4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MWU1NTFlNTE1ZTkwYWUyYmFjNGM0YiIsImlhdCI6MTczMTI4NzE4MiwiZXhwIjoxNzMxMjkwNzgyfQ.bOeR4eYD2d0vWc7uOlKWm7mvKZ4oFTXFFpb7Xn9gD6g
 
 {
-  "carpoolName": "UDs carpool 2",
-      "pickupLocation": "MSC",
-      "dropoffLocation": "UTD",
-      "dateTime": "2024-10-30T14:00:00Z",
-      "role": "Driver",
+  "carpoolName": "Fav's Nails Carpool",
+      "pickupLocation": "Fountain Hill",
+      "dropoffLocation": "Nails and Spa",
+      "dateTime": "2024-11-19T14:00:00Z",
+      "role": "Rider",
       "carType": "Rental",
+      "isPublic": true,
       "maxCarpoolers": 4,
-      "estimatedCost": "$30",
+      "estimatedCost": "30",
       "specialNotes": "My carpool",
       "invitations": []
 }
+
+###
+GET http://localhost:5001/api/carpool/public-carpools
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MWU1NTFlNTE1ZTkwYWUyYmFjNGM0YiIsImlhdCI6MTczMTI4NzE4MiwiZXhwIjoxNzMxMjkwNzgyfQ.bOeR4eYD2d0vWc7uOlKWm7mvKZ4oFTXFFpb7Xn9gD6g

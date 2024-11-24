@@ -1,0 +1,103 @@
+/* carpoollist.css */
+
+/* General container for the carpool list */
+.carpool-list {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap to the next line */
+  justify-content: space-between; /* Space between items */
+  padding: 20px; /* Padding around the list */
+}
+
+/* Individual carpool card styling */
+.carpool-card {
+  background-color: #f9f9f9; /* Light background color for cards */
+  border: 1px solid #e0e0e0; /* Light border around cards */
+  border-radius: 8px; /* Rounded corners */
+  margin: 10px; /* Margin between cards */
+  padding: 15px; /* Internal padding for cards */
+  width: calc(
+    30% - 20px
+  ); /* Responsive width for cards (3 per row with spacing) */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.2s; /* Animation for hover effect */
+}
+
+/* Card hover effect */
+.carpool-card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+}
+
+/* Title styling for carpool name */
+.carpool-card h3 {
+  font-size: 1.5rem; /* Font size for titles */
+  margin: 0 0 10px; /* Margin below the title */
+}
+
+/* Description styling */
+.carpool-card p {
+  margin: 5px 0; /* Margin for paragraphs */
+}
+
+/* Toggle button styling */
+.toggle-button {
+  background-color: #007bff; /* Button background color */
+  color: white; /* Text color */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 10px 15px; /* Padding for button */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Transition for hover effect */
+}
+
+/* Toggle button hover effect */
+.toggle-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Styling for menu icon */
+.menu-icon {
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1.2rem; /* Font size for menu icon */
+  position: relative; /* Relative positioning for dropdown */
+}
+
+/* Dropdown menu styling */
+.menu-dropdown {
+  position: absolute; /* Position dropdown relative to the menu icon */
+  top: 100%; /* Align below the menu icon */
+  right: 0; /* Align to the right */
+  background-color: white; /* Dropdown background */
+  border: 1px solid #e0e0e0; /* Border for dropdown */
+  border-radius: 4px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  z-index: 10; /* Make sure it appears above other elements */
+}
+
+/* Button styles in dropdown */
+.menu-dropdown button {
+  width: 100%; /* Full width for dropdown buttons */
+  padding: 10px; /* Padding for dropdown buttons */
+  border: none; /* No border */
+  background: none; /* No background */
+  text-align: left; /* Align text to the left */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Button hover effect in dropdown */
+.menu-dropdown button:hover {
+  background-color: #f0f0f0; /* Light gray background on hover */
+}
+
+/* Card details styling */
+.carpool-details {
+  margin-top: 10px; /* Space above details */
+}
+
+/* List styling for invitees */
+.carpool-details ul {
+  padding-left: 20px; /* Indent the list */
+}
+
+.carpool-details li {
+  margin-bottom: 5px; /* Space between list items */
+}

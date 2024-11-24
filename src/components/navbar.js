@@ -34,8 +34,13 @@ const NavBar = ({ onSignOut, username }) => {
           </Link>
         </li>
         <li>
-          <Link to="/carpool-history">
-            <i className="fas fa-history"></i> All Carpools
+          <Link to="/carpool-invitations">
+            <i className="fas fa-exchange-alt"></i> Carpool Invitations
+          </Link>
+        </li>
+        <li>
+          <Link to="/my-carpools">
+            <i className="fas fa-history"></i> My Carpools
           </Link>
         </li>
         <li>

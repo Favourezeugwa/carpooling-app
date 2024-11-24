@@ -6,7 +6,6 @@ const carpoolSchema = new mongoose.Schema({
   pickupLocation: { type: String, required: true },
   dropoffLocation: { type: String, required: true },
   dateTime: { type: Date, required: true },
-  role: { type: String, enum: ['Rider', 'Driver'], required: true },
   carType: { 
     type: String, 
     enum: ['Private', 'Rental'], 
@@ -19,13 +18,15 @@ const carpoolSchema = new mongoose.Schema({
   carpoolers: [
     {
       user: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
-      role: { type: String, enum: ['Rider', 'Driver'], required: true }
+      role: { type: String, enum: ['Rider', 'Driver'], required: true, default: 'Rider' },
+      _id: false
     }
   ],
   invitations: [
     {
       email: { type: String, required: true },
-      role: { type: String, enum: ['Rider', 'Driver'] }
+      role: { type: String, enum: ['Rider', 'Driver'] },
+      //_id: false
     }
   ], // Invited users with their roles (rider/driver)
   status: { type: String, enum: ['Upcoming','Active', 'Completed', 'Canceled'], default: 'Upcoming' },
